@@ -1,0 +1,63 @@
+/* public */
+html,body,form,ol,ul,li,div,p,dl,dt,dd,h1,h2,h3,h4,h5,h6,table,th,td,font,em,ins,span,a{margin:0; padding:0;}
+h1,h2,h3,h4,h5,h6,button,input,select,textarea{font-size:100%;font-weight:normal}
+html{_filter:expression(document.execCommand("BackgroundImageCache",false,true));}
+ul,li,div,dl,dt,dd{list-style:none;}
+h1.wm-public{height:0px; line-height:0px; font-size:0px;}
+a{text-decoration:none;}
+a{blr:expression(this.onFocus=this.blur());outline:none;}
+a:hover{text-decoration:underline;}
+img{border:0;}
+font,em{font-style:normal; font-family:\5b8b\4f53;}
+label{vertical-align:middle; font-family:tahoma;}
+textarea,input{resize:none; outline:none;}
+textarea{overflow:auto;}
+ins{float:right; text-decoration:none; font-weight:normal;}
+.pub_wsp{word-wrap:break-word; word-break:break-all;}
+.pub_abso{vertical-align:middle;}
+.pub_clr{clear:both;font-size:0;height:0;line-height:0;overflow:hidden;}
+.pub_yh{font-family:"Microsoft YaHei";}
+.none{display:none;}
+body{background:none; font-size:12px; font-family:Verdana,Geneva,sans-serif,\5b8b\4f53;}
+#content{width:555px; height:271px; background:#0b0409}
+#left{float:left; width:306px; height:271px;padding-right: 1px}
+#right{float:left; width:248px; height:271px;}
+
+.letop{height:134px;padding-bottom: 1px}
+
+.letop img{display:block; width:305px; height:134px; border:1px solid #0f1524;}
+.tab{height:26px; background:url(images/tabbg.jpg) no-repeat}
+.tab a{float:left; width:61px; height:28px;}
+.tab a.btn1{background:url(images/btn1.jpg) no-repeat 0 -26px;}
+.tab a.btn2{background:url(images/btn2.jpg) no-repeat 0 -26px;}
+.tab a.btn3{background:url(images/btn3.jpg) no-repeat 0 -26px;}
+.tab a.btn4{background:url(images/btn4.jpg) no-repeat 0 -26px;}
+.tab a.btn5{background:url(images/btn5.jpg) no-repeat 0 -26px;}
+.tab a:hover,.tab a.hover{background-position:0 0;}
+.list{padding:0 3px; line-height:20px; color:#FFF; display:none;}
+.list,.list a{color:#a4a4a4;}
+.list a.hover,.list a:hover{color:#dc0505;}
+
+.lbli{width:249px; height:271px; position:relative;}
+.lbli img{position:absolute; width:249px; height:269px; border:1px solid #0f1524; display:block; left:0; top:0; z-index:1;}
+.playbtn{z-index:2; width:128px; height:20px; position:absolute; right:0; bottom:6px;}
+.playbtn span{float:left; width:20px; height:20px; cursor:pointer; background:url(images/d.png) no-repeat -20px 0; _background:url(images/d.gif) no-repeat -20px 0;}
+.playbtn span.hover{background-position:0 0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
