@@ -1,41 +1,459 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!--style start-->
-<link rel="stylesheet" type="text/css" href="static/css/style.css">
-<!--style end-->
-<title>游戏充值</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏充值中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #5d4037;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ffccbc;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .recommendation {
+            background: #fff8e1;
+            border-left: 5px solid #ffb74d;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+            color: #5d4037;
+        }
+        
+        .recommendation h2 {
+            color: #e65100;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .recharge-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .option-card {
+            background: #fff3e0;
+            border: 1px solid #ffccbc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.2);
+            border-color: #ff9800;
+            background: #ffe0b2;
+        }
+        
+        .option-card .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        
+        .option-card .card-desc {
+            font-size: 14px;
+            color: #8d6e63;
+        }
+        
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-content {
+            background: #fff8e1;
+            margin: 5% auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-width: 90%;
+            animation: slideIn 0.3s;
+            overflow: hidden;
+            border: 1px solid #ffccbc;
+            width: auto;
+            max-width: 600px;
+            padding: 0;
+        }
+        
+        .modal-header {
+            background: linear-gradient(to right, #ffb74d, #ff9800);
+            color: #5d4037;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ffccbc;
+        }
+        
+        .modal-header h2 {
+            font-size: 22px;
+        }
+        
+        .close {
+            color: #5d4037;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #e65100;
+        }
+        
+        .modal-body {
+            padding: 25px;
+            color: #5d4037;
+        }
+        
+        .modal-section {
+            margin-bottom: 20px;
+        }
+        
+        .modal-section h3 {
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #ffccbc;
+            padding-bottom: 5px;
+        }
+        
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .modal-link {
+            display: block;
+            padding: 12px 15px;
+            background: #ffecb3;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #e65100;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border-left: 4px solid #ff9800;
+            word-break: break-word;
+            text-align: center;
+        }
+        
+        .modal-link:hover {
+            background: #ffd54f;
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.2);
+        }
+        
+        .modal-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .feature-tag {
+            background: #ffccbc;
+            color: #5d4037;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @media (max-width: 600px) {
+            .recharge-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+        }
+    </style>
 </head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>游戏充值中心</h1>
+            <p>安全便捷的游戏充值服务</p>
+        </div>
+        
+        <div class="content">
+            <div class="recommendation">
+                <h2>寻梦运营团队温馨提示：</h2>
+                <p>本服充值比例统一设置，所有承诺高比例代充的均为骗子，请注意甄别，以免造成经济损失。</p>
+            </div>
+            
+            <div class="recharge-options">
+                <div class="option-card" data-modal="01-recharge">
+                    <div class="card-title">五职业怀旧</div>
+                    <div class="card-desc">五职业怀旧版本请点击此处进行充值</div>
+                </div>
+                <div class="option-card" data-modal="02-recharge">
+                    <div class="card-title">待开发···</div>
+                    <div class="card-desc">版本开发中···</div>
+                </div>
+                <div class="option-card" data-modal="03-recharge">
+                    <div class="card-title">待开发···</div>
+                    <div class="card-desc">版本开发中···</div>
+                </div>
+                <div class="option-card" data-modal="04-recharge">
+                    <div class="card-title">待开发···</div>
+                    <div class="card-desc">版本开发中···</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 充值卡购买弹窗 -->
+    <div class="modal" id="01-recharge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>充值入口</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>分区选择</h3>
+                    <div class="modal-links">
+                        <a href="http://pay.ekoopay.com:80/ch/a.html?sid=27539
+" target="_blank" class="modal-link">首区 - 河阳城</a>
+                        <a href="" target="_blank" class="modal-link">未开 - 青云门</a>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>充值奖励</h3>
+					<p>单次充值满足以下金额可享受优惠，多笔充值按单笔金额计算</p>
+                    <div class="modal-features">
+                        <span class="feature-tag">100元赠送5%</span>
+                        <span class="feature-tag">200元赠送7.5%元</span>
+                        <span class="feature-tag">500元赠送10%</span>
+						<span class="feature-tag">1000元赠送15%</span>
+						<span class="feature-tag">5000元及以上赠送20%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PC端充值弹窗 -->
+    <div class="modal" id="02-recharge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>充值入口</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>分区选择</h3>
+                    <div class="modal-links">
+                        <a href="" target="_blank" class="modal-link">感谢您的关注，新版本筹划中···</a>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>充值奖励</h3>
+                    <p>感谢您的关注，新版本筹划中···</p>
+                    <div class="modal-features">
+                        <span class="feature-tag">暂</span>
+                        <span class="feature-tag">未</span>
+                        <span class="feature-tag">开</span>
+                        <span class="feature-tag">放</span>
+						<span class="feature-tag">·</span>
+                        <span class="feature-tag">·</span>
+                        <span class="feature-tag">·</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 登录器充值弹窗 -->
+    <div class="modal" id="03-recharge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>充值入口</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>分区选择</h3>
+                    <div class="modal-links">
+                        <a href="" target="_blank" class="modal-link">感谢您的关注，新版本筹划中···</a>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>充值奖励</h3>
+                    <p>感谢您的关注，新版本筹划中···</p>
+                    <div class="modal-features">
+                        <span class="feature-tag">暂</span>
+                        <span class="feature-tag">未</span>
+                        <span class="feature-tag">开</span>
+                        <span class="feature-tag">放</span>
+						<span class="feature-tag">·</span>
+                        <span class="feature-tag">·</span>
+                        <span class="feature-tag">·</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 移动端充值弹窗 -->
+    <div class="modal" id="04-recharge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>充值入口</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>分区选择</h3>
+                    <div class="modal-links">
+                        <a href="" target="_blank" class="modal-link">感谢您的关注，新版本筹划中···</a>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>充值奖励</h3>
+                    <p>感谢您的关注，新版本筹划中···</p>
+                    <div class="modal-features">
+                        <span class="feature-tag">暂</span>
+                        <span class="feature-tag">未</span>
+                        <span class="feature-tag">开</span>
+                        <span class="feature-tag">放</span>
+						<span class="feature-tag">·</span>
+                        <span class="feature-tag">·</span>
+                        <span class="feature-tag">·</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<body style="
-
-background-image:url(static/image/error.jpg);">
-<!--start-->
-<div class="yxjs-bg oh">
-	<div class="yxjs-box oh"></div>
-</div>
-<div class="box" style="z-index:99999; position:relative;">
-	<h2 class="download-h2">充值中心</h2>
-<table cellpadding="0" cellspacing="0" class="download-table">
-	    <tr>
-        	<td colspan="2" style="font-size:26px; font-weight:bold;">推荐使用卡密充值方式</td>
-    </tr>
-       <tr>
-        	<td>
-            	<a href="https://yunpan.360.cn/" target="_blank">充值卡购买</a>            </td>
-<td>
-            	<a href="https://yunpan.360.cn/" target="_blank">PC端充值</a>            </td>
-    </tr>
-		<tr>
-        	<td>
-            	<a href="https://yunpan.360.cn/" target="_blank">登录器充值</a>            </td>
-<td>
-            	<a href="https://yunpan.360.cn/" target="_blank">移动端充值</a>            </td>
-    </tr>
-    </table>
-</div>
-<!--end-->
+    <script>
+        // 获取所有弹窗和关闭按钮
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close');
+        const optionCards = document.querySelectorAll('.option-card');
+        
+        // 为每个选项卡片添加点击事件
+        optionCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const modalType = this.getAttribute('data-modal');
+                const modal = document.getElementById(`${modalType}-modal`);
+                if (modal) {
+                    modal.style.display = 'block';
+                    // 根据内容自适应大小
+                    autoResizeModal(modal);
+                }
+            });
+        });
+        
+        // 为所有关闭按钮添加点击事件
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                modal.style.display = 'none';
+            });
+        });
+        
+        // 点击弹窗外部关闭
+        window.addEventListener('click', function(event) {
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+        
+        // 自适应调整弹窗大小
+        function autoResizeModal(modal) {
+            const modalContent = modal.querySelector('.modal-content');
+            const modalBody = modal.querySelector('.modal-body');
+            
+            // 设置弹窗尺寸为自适应
+            modalContent.style.width = 'auto';
+            modalContent.style.maxWidth = '600px';
+            modalContent.style.height = 'auto';
+        }
+        
+        // 窗口大小变化时重新调整
+        window.addEventListener('resize', function() {
+            modals.forEach(modal => {
+                if (modal.style.display === 'block') {
+                    autoResizeModal(modal);
+                }
+            });
+        });
+    </script>
 </body>
+<body style="
+background-image:url(static/image/error.png);">
 </html>
-
