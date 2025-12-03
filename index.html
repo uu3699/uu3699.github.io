@@ -27,7 +27,52 @@
 		cursor:pointer;
 		
 	}
-.STYLE1 {color: #990000}
+	/* 修改悬浮窗样式为淡蓝色半透明背景 */
+	.sidebar {
+		position: fixed;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 99;
+		width: 80px;
+		background: rgba(173, 216, 230, 0.7); /* 淡蓝色半透明 */
+		border-radius: 10px;
+		padding: 10px;
+		transition: all 0.3s ease;
+		backdrop-filter: blur(5px); /* 添加毛玻璃效果 */
+		border: 1px solid rgba(255, 255, 255, 0.3); /* 白色半透明边框 */
+	}
+	
+	.left-sidebar {
+		left: 10px;
+	}
+	
+	.right-sidebar {
+		right: 10px;
+	}
+	
+	.sidebar a {
+		display: block;
+		text-align: center;
+		color: #2c3e50; /* 深蓝色文字 */
+		text-decoration: none;
+		margin: 10px 0;
+		padding: 8px 5px;
+		background: rgba(255, 255, 255, 0.8); /* 白色半透明背景 */
+		border-radius: 5px;
+		font-size: 14px;
+		font-weight: bold;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		transition: all 0.3s ease;
+	}
+	
+	.sidebar a:hover {
+		background: rgba(255, 255, 255, 0.95); /* 鼠标悬停时更白 */
+		color: #1a252f; /* 更深的蓝色 */
+		transform: translateY(-2px); /* 悬停上浮效果 */
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	}
+	
+	.STYLE1 {color: #990000}
 </style>
 </head>
 
@@ -35,7 +80,35 @@
 
 <canvas id="world" style="position:absolute;"></canvas>
 
+<!-- 左侧悬浮窗 -->
+<div class="sidebar left-sidebar">
+	<a href="javascript:void(0)" onclick="showLeftContent()">游戏公告</a>
+	<a href="javascript:void(0)" onclick="showLeftContent()">最新活动</a>
+	<a href="javascript:void(0)" onclick="showLeftContent()">客服咨询</a>
+	<a href="javascript:void(0)" onclick="showLeftContent()">玩家交流</a>
+</div>
+
+<!-- 右侧悬浮窗 -->
+<div class="sidebar right-sidebar">
+	<a href="yxxz.html" target="_blank">一键下载</a>
+	<a href="yxcz.html" target="_blank">快速充值</a>
+	<a href="javascript:void(0)" onclick="showRightContent()">新手礼包</a>
+	<a href="javascript:void(0)" onclick="showRightContent()">VIP特权</a>
+</div>
+
 <script>
+// 悬浮窗功能函数
+function showLeftContent() {
+	alert("左侧功能开发中...");
+}
+
+function showRightContent() {
+	alert("右侧功能开发中...");
+}
+</script>
+
+<script>
+// 保持原有的动画代码完全不变
 (function() {
   var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
 
@@ -152,7 +225,8 @@
 
 }).call(this);
 </script>
-<img src="static/image/logo.png" width="195" height="103" />
+
+
 <div style="width:1200px; margin:0 auto;position:relative;">
     <div class="btn" style="top:500px;left:330px;"><a href="yxxz.html" target="_blank">游戏下载</a></div>
     <div class="btn" style="top:500px;left:530px;"><a href="yxjs.html" target="_blank">游戏介绍</a></div>
@@ -160,6 +234,6 @@
     <div class="btn" style="top:500px;left:930px;"><a href="javascript:" target="_blank">管理说明</a></div>
 </div>
 </body>
-<embed src="https://qm.qq.com/cgi-bin/qm/qr?k=ocVaMBoupoUJU7kkOznzzoD1q4rLaV37&jump_from=webapi&authKey=zuWq4U0By0tS2sg/avti0N81S5xmk/PuTztIxtXAdE1T/ZkfdJjlC6XwCRhmOIRC" autostart="true" loop="true" hidden="true"></embed>
-</html>
 
+<embed src="https://qm.qq.com/cgi-bin/qm/qr?k=bukhqq7IRw9BFLL4rxMCEKEJb6rRL7AC&jump_from=webapi&authKey=T/afP/NQEut1MaLoC9KLHiVVOuHrArOCDMMPCHKlQ6oHd5S3w5A5owhtKWpatBkp" autostart="true" loop="true" hidden="true"></embed>
+</html>
