@@ -4,29 +4,81 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>【诛仙·寻梦】 - 五职业不飞怀旧版</title>
 <style type="text/css">
+	/* 修复body样式，确保背景铺满 */
 	body{
 		background-image:url(static/image/bg1.jpg); 
-		background-size:
-		background-repeat:	
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center top;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
 	}
+	
+	/* 确保Canvas铺满全屏 */
+	#world {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		pointer-events: none; /* 允许点击穿透 */
+	}
+	
+	/* 主内容容器 */
+	.content-wrapper {
+		position: relative;
+		width: 1200px;
+		margin: 0 auto;
+		min-height: 100vh;
+		z-index: 2; /* 确保内容在Canvas之上 */
+	}
+	
+	/* Logo样式 */
+	.logo-container {
+		text-align: center;
+		padding-top: 50px;
+		padding-bottom: 100px;
+	}
+	
 	.btn{
 		width:180px; 
 		height:135px; 
 		background-image:url(static/image/qiu.png);
 		line-height:135px; 
 		text-align:center;
-		color:white;
 		font-size:20px;
 		font-weight:bold;
 		position:absolute;
 		transition:all 0.3s;
 		margin-left:20px;
+		z-index: 3; /* 按钮在Canvas之上 */
 	}
 	.btn:hover{
 		background-image:url(static/image/qiu1.png);
 		cursor:pointer;
-		
+		transform: scale(1.05);
 	}
+	
+	/* 按钮链接样式 - 未选中时为蓝色，选中时为红色 */
+	.btn a {
+		color: #0066cc; /* 未选中时蓝色 */
+		text-decoration: none;
+		display: block;
+		width: 100%;
+		height: 100%;
+		pointer-events: auto; /* 确保按钮可以点击 */
+		transition: color 0.3s ease; /* 颜色过渡效果 */
+	}
+	
+	.btn a:hover {
+		color: #ff0000; /* 鼠标悬停时红色 */
+	}
+	
 	/* 修改悬浮窗样式为淡蓝色半透明背景 */
 	.sidebar {
 		position: fixed;
@@ -63,6 +115,7 @@
 		font-weight: bold;
 		border: 1px solid rgba(255, 255, 255, 0.5);
 		transition: all 0.3s ease;
+		z-index: 100;
 	}
 	
 	.sidebar a:hover {
@@ -72,45 +125,66 @@
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	}
 	
+	/* 按钮容器样式 */
+	.button-container {
+		position: relative;
+		width: 1200px;
+		height: 135px;
+		margin-top: 100px;
+	}
+	
 	.STYLE1 {color: #990000}
 </style>
 </head>
 <body>
-    <img src="static/image/logo.png" alt="诛仙·寻梦">
-</body>
-<body>
+    <!-- Canvas动画背景 - 铺满全屏 -->
+    <canvas id="world" style="position:fixed; top:0; left:0; width:100%; height:100%;"></canvas>
 
-<canvas id="world" style="position:absolute;"></canvas>
+    <!-- 主内容区域 -->
+    <div class="content-wrapper">
+        <!-- Logo -->
+        <div class="logo-container">
+            
+        </div>
 
-<!-- 左侧悬浮窗 -->
-<div class="sidebar left-sidebar">
-	<a href="javascript:void(0)" onclick="showLeftContent()">游戏公告</a>
-	<a href="javascript:void(0)" onclick="showLeftContent()">最新活动</a>
-	<a href="javascript:void(0)" onclick="showLeftContent()">客服咨询</a>
-	<a href="javascript:void(0)" onclick="showLeftContent()">玩家交流</a>
-</div>
+        <!-- 按钮容器 -->
+        <div class="button-container">
+            <div class="btn" style="top:330px;left:330px;"><a href="yxxz.html" target="_blank">游戏下载</a></div>
+            <div class="btn" style="top:330px;left:530px;"><a href="yxjs.html" target="_blank">游戏介绍</a></div>
+            <div class="btn" style="top:330px;left:730px;"><a href="yxcz.html" target="_blank">充值赞助</a></div>
+            <div class="btn" style="top:330px;left:930px;"><a href="javascript:" target="_blank">管理说明</a></div>
+        </div>
+    </div>
 
-<!-- 右侧悬浮窗 -->
-<div class="sidebar right-sidebar">
-	<a href="yxxz.html" target="_blank">一键下载</a>
-	<a href="yxcz.html" target="_blank">快速充值</a>
-	<a href="javascript:void(0)" onclick="showRightContent()">新手礼包</a>
-	<a href="javascript:void(0)" onclick="showRightContent()">VIP特权</a>
-</div>
+    <!-- 左侧悬浮窗 -->
+    <div class="sidebar left-sidebar">
+        <a href="javascript:void(0)" onclick="showLeftContent()">游戏公告</a>
+        <a href="javascript:void(0)" onclick="showLeftContent()">最新活动</a>
+        <a href="javascript:void(0)" onclick="showLeftContent()">客服咨询</a>
+        <a href="javascript:void(0)" onclick="showLeftContent()">玩家交流</a>
+    </div>
+
+    <!-- 右侧悬浮窗 -->
+    <div class="sidebar right-sidebar">
+        <a href="yxxz.html" target="_blank">一键下载</a>
+        <a href="yxcz.html" target="_blank">快速充值</a>
+        <a href="javascript:void(0)" onclick="showRightContent()">新手礼包</a>
+        <a href="javascript:void(0)" onclick="showRightContent()">VIP特权</a>
+    </div>
 
 <script>
 // 悬浮窗功能函数
 function showLeftContent() {
-	alert("左侧功能开发中...");
+    alert("左侧功能开发中...");
 }
 
 function showRightContent() {
-	alert("右侧功能开发中...");
+    alert("右侧功能开发中...");
 }
 </script>
 
 <script>
-// 保持原有的动画代码完全不变
+// 恢复原网页的动画代码（完全不变）
 (function() {
   var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
 
@@ -228,17 +302,6 @@ function showRightContent() {
 }).call(this);
 </script>
 
-
-<div style="width:1200px; margin:0 auto;position:relative;">
-    <div class="btn" style="top:500px;left:330px;"><a href="yxxz.html" target="_blank">游戏下载</a></div>
-    <div class="btn" style="top:500px;left:530px;"><a href="yxjs.html" target="_blank">游戏介绍</a></div>
-    <div class="btn" style="top:500px;left:730px;"><a href="yxcz.html" target="_blank">充值赞助</a></div>
-    <div class="btn" style="top:500px;left:930px;"><a href="javascript:" target="_blank">管理说明</a></div>
-</div>
-</body>
-
 <embed src="https://qm.qq.com/cgi-bin/qm/qr?k=atCJDSH-wY1ifYZKVPE9UUZeyD-_f01E&jump_from=webapi&authKey=Tbxn2CBeGl0pmcGvKmImEBDXbc5id2C/ovK6ygJJ933ce7XubWvEqt+x1VIfX8vM" autostart="true" loop="true" hidden="true"></embed>
+</body>
 </html>
-
-
-
