@@ -1,218 +1,213 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-
-<meta name="description" content="寻梦诛仙：因为专业，所以懂得">
-
-<title>游戏介绍</title>
-
-<style type="text/css"> 
-
-
-
-body { 
-
-background-image:url("static/image/error.png")/*tpa=http://uu3699.com/static/image/error.jpg*/; 
-
-background-repeat: no-repeat; 
-
-background-attachment: fixed;
-
-} 
-
-.STYLE4 {
-
-	color: #FF0000;
-
-	font-size: 20px;
-
-	font-family: "宋体";
-
-}
-
-.STYLE16 {color: #990000; font-size: 25px; font-family: "宋体"; font-weight: bold; }
-
-.STYLE17 {font-size: 22px}
-.STYLE22 {color: #9900FF}
-.STYLE23 {color: #0000FF}
-.STYLE24 {color: #000000}
-</style> 
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版本介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: url(static/image/error.png);
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #5d4037;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ffccbc;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .recommendation {
+            background: #fff8e1;
+            border-left: 5px solid #ffb74d;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+            color: #5d4037;
+        }
+        
+        .recommendation h2 {
+            color: #e65100;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .recharge-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .option-card {
+            background: #fff3e0;
+            border: 1px solid #ffccbc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.2);
+            border-color: #ff9800;
+            background: #ffe0b2;
+        }
+        
+        .option-card .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        
+        .option-card .card-desc {
+            font-size: 14px;
+            color: #8d6e63;
+        }
+        
+        .recharge-info {
+            background: #fff8e1;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ffccbc;
+        }
+        
+        .recharge-info h2 {
+            color: #e65100;
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .recharge-section {
+            margin-bottom: 20px;
+        }
+        
+        .recharge-section h3 {
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #ffccbc;
+            padding-bottom: 5px;
+        }
+        
+        .recharge-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .feature-tag {
+            background: #ffccbc;
+            color: #5d4037;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 600px) {
+            .recharge-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>寻梦版本介绍</h1>
+        </div>
+        
+        <div class="content">
+            <div class="recommendation">
+                <h2>寻梦运营团队温馨提示：</h2>
+                <p>请详细了解版本设置，选择您喜欢的版本，寻梦所有版本均精心打造</p>
+            </div>
+            
+            <div class="recharge-options">
+                <a href="yxjs5hj.html" target="_blank" class="option-card">
+                    <div class="card-title">五职业怀旧</div>
+                    <div class="card-desc">五职业怀旧版本请点击此处了解</div>
+                </a>
+                
+                <a href="yxjs5f5.html" target="_blank" class="option-card">
+                    <div class="card-title">五职业飞升</div>
+                    <div class="card-desc">五飞五版本请点击此处进行了解</div>
+                </a>
+                
+                <a href="#" class="option-card">
+                    <div class="card-title">待开发···</div>
+                    <div class="card-desc">版本开发中···</div>
+                </a>
+                
+                <a href="#" class="option-card">
+                    <div class="card-title">待开发···</div>
+                    <div class="card-desc">版本开发中···</div>
+                </a>
+            </div>
+        </div>
+    </div>
 
-<body bgcolor="#FFFFFF">
-
-<table width="1024" border="0" align="center" cellpadding="0" cellspacing="0">
-
-  <tr>
-    <td height="43"><div align="center" class="STYLE17"></div></td>
-  </tr>
-	<td><div align="left">
-
-    <p align="center" class="STYLE2" style="margin: 0px; padding: 0px 0px 10px; color: #FF0000; font-family: &quot;微软雅黑&quot;; font-size: 35px; line-height: 45px;"><strong>公益版本介绍</strong></p>
-
-    <div align="center" class="STYLE4" style="margin: 0px; padding: 0px; font-family: 宋体; font-size: 18px; color: #000000;"><div style="margin: 0px; padding: 0px; line-height: 2;">
-      <p>***********************************************************************************************<br />
-      <p>****************************【原汁原味 真正怀旧 公平公正 杜绝内幕】****************************<br />
-      <p>***********************************************************************************************<br />
-
-    <div align="left" class="STYLE4" style="margin: 0px; padding: 0px; font-family: 宋体; font-size: 18px; color: #000000;"><div style="margin: 0px; padding: 0px; line-height: 2;">
-	<b style=" font-size:16px; color:#FF00FF">
-	重要提示：为了获得完美的游戏体验，请玩家务必使用“专用客户端”进入游戏！<br />
-	<b style=" font-size:16px; color:#FF0000">【版本设置】<br />
-    <b style=" font-size:15px; color:#000000">
-    游戏简介：五职业不飞版本，真正的怀旧不繁琐，精心制作回馈家人们<br />
-    游戏简介：游戏内容和升级速度同步官方270经典版本<br />
-    游戏简介：上线赠送起步所需物品，江湖路上不再无力<br />
-	游戏简介：无元婴·无血祭·无三碗<br />
-	游戏简介：无宠物·无师德·无元神<br />
-	游戏简介：无罡气细节，金身法身根据游戏阶段最高开放至千法千金<br />
-    游戏简介：特色装备回收系统，所有暴击武器均可回收，重铸为其他武器<br />
-    游戏简介：一切均可游戏获得，免费赠送各种药品和材料<br />
-    游戏简介：技能优化，最平衡最好玩的怀旧服<br />
-    游戏简介：元宝商城同步官方，不卖大药！不卖大药！不卖大药！<br />
-    游戏简介：特色坐骑，官方时装，超炫羽翅，给你怀旧不旧的体验<br />
-	游戏简介：禁止使用飞天盾地穿墙挂打架，辅助跑群，辅助刷BOSS，等其他黑科技，核实后将封号处理！<br />
-	</p>
-	
-	  <b style=" font-size:16px; color:#FF0000">【升级指引】<br />
-       <b style=" font-size:15px; color:#000000">
-		I：上线赠送基础物资，跟据任务指引完成主线任务、配合传功和红绿任务是前期最快的等级提升方式<br />
-		II：游戏内设置的活动奖励大量经验，请参考活动介绍<br />
-		III：每个阶段均可在传功使者处接取凶咒任务，经验非常可观，60级后可在青云老头旁领取云游天降任务<br />
-		IV：悬赏任务和传功任务，是阁下快速升级的不二之选，记住拥有足够的传功石才能一直传功哦<br />
-		V：如果你有足够的金币，金丹日常一定要做，超值回报让你无法拒绝，天行者、行天、宝物、建功立事等<br />
-		VI：手头紧？可以研究下遁宝怎么做，各种好物品简直不要太爽，还会触发鱼妖，击杀也会给客观经验<br />
-        </p>
-		
-    <p>
-	<b style=" font-size:16px; color:#FF0000">【装备说明】<br />
-    <b style=" font-size:15px; color:#000000">
-	门派使者出售各职业白装<br/>
-	<b style=" font-size:15px; color:#000000">
-	精英地图挂机随机掉落各种散仙装备<br />
-	<b style=" font-size:15px; color:#000000">
-	boss掉落真仙配方和真仙材料，以及各职业真仙武器<br />
-	<b style=" font-size:15px; color:#000000">
-	传功使者开放新人专属任务，完成后可以获得【真仙残叶】，兑换所需真仙装备<br />
-	</p>
-		
-      <p>
-	  <b style=" font-size:16px; color:#FF0000">【BOSS设置】<br />
-          <b style=" font-size:15px; color:#000000">
-			boss刷新均同步官方位置及刷新机制，简化为仅在一线刷新<br />
-          <b style=" font-size:15px; color:#000000">
-			经典boss等级上调30级，且概率掉落铁玉、金叶子、金条<br />
-          <b style=" font-size:15px; color:#000000">
-			周末狂欢-每五六日晚22时云渺昆仑BOSS大战（难度及掉落随当前阶段调整）<br />
-          <b style=" font-size:15px; color:#000000">
-			炼狱大战-击杀boss概率掉落非绑定9玉，魔尊额外随机掉落魔尊装备（属性强大的特色魔尊装备）<br />
-          <b style=" font-size:15px; color:#000000">
-			镇魔洞兽神和炼狱妙翅鸟调整为每晚8点刷新<br />
-          <b style=" font-size:15px; color:#000000">
-			昆仑奴新增掉落万卷书，行万里路不如读万卷书，书里究竟有什么呢？等你揭晓<br />
-			</p>
-			
-      <p>
-			<b style=" font-size:15px; color:#FF00FF">活动设置：<br />
-<b style=" font-size:16px; color:#FF0000">特别提示：活动设置为了充实版本内容，若无充足时间及精力可选择性完成<br />
-          <b style=" font-size:15px; color:#000000">
-1、河阳在线泡点任务（每日6次，奖励丰厚，会有意外惊喜）<br />
-2、特色任务-任劳任怨，既然任怨就不要抱怨【每日18时-22时】<br />
-3、特色玩法-灵韵仙树，劳动人民最光荣，寻梦不会让辛苦劳动的玩家白白辛苦（稀有坐骑，星砂）【每日12时-24时】<br />
-4、十面埋伏-奖励丰厚，累计完成5次，会有意外惊喜（天魔血晶）【每日16时-22时】<br />
-5、凌霄探秘-与好友一起征服凌霄赢得装备【全天】<br />
-6、追风圣灵-保底限时5玉，中奖限时8玉【每日19时20-19时30】<br />
-7、逐波圣灵-保底限时5玉，中奖限时8玉【每日11时50-12时】<br />
-8、修真总动员-乾坤通宝，轩辕古币【每周五19时-22时】<br />
-9、妖兽总动员-乾坤通宝，完成随机奖励9玉【每周日19时45分】<br />
-10、钓鱼大赛-金币+补天+残瑶星芒【每日18时】<br />
-11、北斗星宿-大量金丹奖励，通宝古币【】<br />
-12、天下会武-大量经验【周一周二19时30】<br />
-13、太古镇元旗-金币、造化【每日18时-24时】<br />
-14、守卫河阳【每周二19时30】<br />
-15、金丹之术-金丹+碎雪星芒<br />
-16、戾气危机-金丹<br />
-17、彻夜不免-奖励经验上调为3倍<br />
-18、云游天将试炼-随机奖励5级铁玉+金丹<br />
-19、天界榜文-首饰+嗜血珠<br />
-20、云渺之争-周五六日带着强大装备的boss等你来战<br />
-21、凌霄城战-胜者王，实力的象征<br />
-	</p>
-
-        <b style=" font-size:15px; color:#FF00FF">【特色内容】：<br />
-			<b style=" font-size:15px; color:#FF8080">
-			一、云渺昆仑boss（云渺昆仑内下线将会被送回昆仑）<br />
-			每五六日晚，可由一线昆仑沐雨蒙进入云渺昆仑<br />
-			周五周六掉落真仙装备+暴击武器+小概率兽神装<br />
-			周日掉落兽神装备+暴击武器<br />
-			90阶段掉落神兽套装<br />
-			125阶段掉落兽神套装<br />
-			141阶段掉落魔尊套装<br />
-			<b style=" font-size:15px; color:#FF8000">
-			二、十面埋伏（天魔血晶日常获得唯一渠道）<br />
-			每日16时-22时，可在天音 张珊珊处开始活动，需6人组队领取<br />
-			完成任务可获得金丹奖励，累计完成5次可有机会获得【9级铁玉】【天魔血晶】<br />
-			<b style=" font-size:15px; color:#008000">
-			三、专属传功任务<br />
-			开放新阶段后，将会自动开放升级版传功任务，额外奖励金丹，解决新人升级问题<br />
-			<b style=" font-size:15px; color:#8080FF">
-			四、天将试炼<br />
-			45级以后在河阳传功使者领取天将试炼任务<br />
-			完成后奖励真仙残叶，用于兑换真仙装备<br />
-			开放新阶段后可兑换上阶段真仙装备<br />
-			<b style=" font-size:15px; color:#FF80FF">
-			五、补天符产出<br />
-			调整精英地图怪物掉落补天符，解决装备精炼材料需求<br />
-			同时适当上调攻防属性<br />
-			友情提示，群攻技能收益减半<br />
-			<b style=" font-size:15px; color:#FF8080">
-			六、凌霄探秘<br />
-			由河阳 凌霄特使处报名进入，需90级以上6人组队共同完成<br />
-			击杀boss掉落当前阶段真仙装备<br />
-			开荒玩家必不可少的装备获取渠道之一<br />
-			小boss掉真仙气血真气武器+真仙防御装备<br />
-			大boss掉落真仙气血真气武器+暴击武器+真仙防御装备<br />
-			<b style=" font-size:15px; color:#FF8000">
-			七、钓鱼大赛<br />
-			冠军奖励500金100补天5个残瑶星芒<br />
-			亚军奖励200金10补天1个残瑶星芒<br />
-			兑换碧瑶系列首饰唯一的获取材料渠道<br />
-			<b style=" font-size:15px; color:#008000">
-			八、武器重铸<br />
-			本服独家提供暴击武器回收及重铸服务<br />
-			60级及以上武器，可由寻梦大使处回收<br />
-			90级及以上武器，可由寻梦大使处铸造<br />
-			真正实现武器自由，让暴击武器不再被大势力垄断<br />
-			<b style=" font-size:15px; color:#FF80FF">
-			九、法宝重铸<br />
-			喜欢的法宝来之不易，但是属性不好该放弃么？<br />
-			本服特意提供法宝置换服务，让每个法宝都能成为神器<br />
-
-			<p>
-		<b style=" font-size:16px; color:#FF0000">【管理声明】<br />
-		<b style=" font-size:16px; color:#000000">
-          →:0.本服严禁公共聊天频道喊话售卖各种物品，首次发现禁言一天，二次禁言7天，三次永久禁言<br />
-		  →:1.本服严禁使用变态辅助，卡属性，核实之后一律永久封号处理!（自动跑活，天音自动救人，被救自动起等等一系列非常规操作）<br />
-          →:2.游戏建立角色名，禁止带有侮辱玩家字眼，影响游戏环境的恶心词汇。<br />
-          →:3.注册帐号时,谨记问题和答案,这是帐号唯一证明凭证,不记者被盗号,自行负责!<br />
-		  →:4.本服没有GM在线,有事请联系客服，游戏里所有说自己是GM或者是客服的都是骗子!请玩家切记!<br />
-		  →:5.请使用纯净端进行解压，否则将报错或者无法正常显示游戏内物品.建议在本服下载客户端。<br />
-		  →:6.萝卜白菜各有所爱我们不能打造每人喜爱的版本，但玩家有什么宝贵的建议我们会保留。<br />
-		  →:7.本服不允许使用变态外挂，禁止跑群，卡技能。<br />
-		  →:8.禁止跑活万蝠洞、黑石洞、狐岐山地宫、镇魔古洞，幻月洞、仙境之门、炼狱、一经发现一率封号不做任何解释！！<br />
-          <a href='#' target='_blank'><font size="4">
-		  抵制不良游戏,拒绝盗版游戏。注意自我保护,预防受骗上当。适度游戏益脑,沉迷游戏伤身。合理安排时间,享受健康生活</font></a>
-          <a href='#' target='_blank'><font size="4">
-		  本网站信息均做学习娱乐使用。如果此内容对您造成了影响，请联系我们删除。</font></a>
-			</p>
+    <script>
+        // 简化后的JavaScript，仅保留必要的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const optionCards = document.querySelectorAll('.option-card');
+            
+            optionCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // 添加点击反馈效果
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
-
-
